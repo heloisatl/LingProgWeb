@@ -20,6 +20,27 @@ $p5 = new Pokemon("https://raw.githubusercontent.com/PokeAPI/sprites/master/spri
 
 $pokemons = array($p1, $p2, $p3, $p4, $p5);
 
+//Criar uma tabela com os dados dos pokemons
+
+echo"<table border=1>";
+
+//Linha com o cabeçalho da tabela
+echo "<tr>";
+echo "<th> Imagem</th>";
+
+echo "<th> Nome</th>";
+
+echo "<th> Tipo</th>";
+
+echo "<th> Link</th>";
+echo "</tr>";
+
+
+//Linha com os dados dos pokemons
+
+
+echo"</table>";
+
 //Cabeçalho
 echo "<table border=1>";
 echo "<tr>";
