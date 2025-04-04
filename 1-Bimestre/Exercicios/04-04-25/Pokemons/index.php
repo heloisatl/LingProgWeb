@@ -2,6 +2,15 @@
 
 require_once("model/Pokemon.php");
 
+function desenhaLinha(Pokemon $pok){
+echo "<tr>";
+    echo "<td><img src=' " . $p->getImagem()  . "'> </td>";
+    echo "<td>" . $pok->getNome() . "</td>";
+    echo "<td>" . $pok->getTipo() . "</td>";
+    echo "<td><a href='" . $pok->getLink() . "'target='_blank'></a>Mais Informações</td>";
+    echo "</tr>";
+}
+
 function linhaPokemon(Pokemon $poke) {
     echo "<tr>";
     echo "<td><img src='" . $poke->getImagem() . "' height='100' /></td>";
@@ -37,12 +46,21 @@ echo "</tr>";
 
 
 //Linha com os dados dos pokemons
+foreach($pokemons as $p){
+    // echo "<tr>";
+    // echo "<td><img src=' " . $p->getImagem()  . "'> </td>";
+    // echo "<td>" . $p->getNome() . "</td>";
+    // echo "<td>" . $p->getTipo() . "</td>";
+    // echo "<td><a href='" . $p->getLink() . "'target='_blank'></a>Mais Informações</td>";
+    // echo "</tr>";
 
+    desenhaLinha($p);
+}
 
 echo"</table>";
 
 //Cabeçalho
-echo "<table border=1>";
+echo "<table border=1 style='background-color: lightblue'>";
 echo "<tr>";
 echo "<th>Imagem</th>";
 echo "<th>Nome</th>";
