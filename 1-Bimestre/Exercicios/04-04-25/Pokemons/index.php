@@ -4,7 +4,7 @@ require_once("model/Pokemon.php");
 
 function desenhaLinha(Pokemon $pok){
 echo "<tr>";
-    echo "<td><img src=' " . $p->getImagem()  . "'> </td>";
+    echo "<td><img src=' " . $pok->getImagem()  . "'> </td>";
     echo "<td>" . $pok->getNome() . "</td>";
     echo "<td>" . $pok->getTipo() . "</td>";
     echo "<td><a href='" . $pok->getLink() . "'target='_blank'></a>Mais Informações</td>";
