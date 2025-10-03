@@ -40,40 +40,35 @@ class AlunoController {
         return $erros;
     }
 
-    public function alterar(Aluno $aluno){
+    public function alterar(Aluno $aluno) {
         $erros = $this->alunoService->validarAluno($aluno);
-        if(count($erros) > 0){
+        if(count($erros) > 0) 
             return $erros;
-        }
 
-        //Se não tiver erros, chama o DAO       
+        //Se não deu erros, alterar o aluno no banco de dados
         $erro = $this->alunoDAO->alterar($aluno);
         if($erro) {
-            array_push($erros, "Erro ao salvar o aluno!");
+            array_push($erros, "Erro ao atualizar o aluno!");
             if(AMB_DEV)
                 array_push($erros, $erro->getMessage());
         }
 
         return $erros;
- 
     }
 
-
-    public function excluir(Aluno $aluno){
+    public function excluirPorId(int $id) {
         $erros = array();
-
-        //Se não tiver erros, chama o DAO       
-        $erro = $this->alunoDAO->excluir($aluno);
-        if($erro) {
         
-            array_push($erros, "Erro ao deletar o aluno!");
+        $erro = $this->alunoDAO->excluirPorId($id);
+        if($erro) {
+            array_push($erros, "Erro ao excluir o aluno!");
             if(AMB_DEV)
                 array_push($erros, $erro->getMessage());
         }
 
         return $erros;
- 
     }
+
 
 
 }

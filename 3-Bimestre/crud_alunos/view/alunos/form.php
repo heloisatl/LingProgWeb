@@ -14,9 +14,8 @@ include_once(__DIR__ . "/../include/header.php");
 
 <div class="row">
 
-    <div class="col-6"> 
-
-
+    <div class="col-6">
+    
         <form method="POST" action="">
 
             <div>
@@ -29,7 +28,7 @@ include_once(__DIR__ . "/../include/header.php");
             <div>
                 <label for="txtIdade" class="form-label">Idade:</label>
                 <input type="number" id="txtIdade" name="idade"
-                    placeholder="Informe a idade"  class="form-control"
+                    placeholder="Informe a idade" class="form-control"
                     value="<?= $aluno ? $aluno->getIdade() : '' ?>">
             </div>
 
@@ -47,7 +46,7 @@ include_once(__DIR__ . "/../include/header.php");
             </div>
 
             <div>
-                <label for="selCurso">Curso:</label>
+                <label for="selCurso" class="form-label">Curso:</label>
                 <select name="curso" id="selCurso" class="form-select">
                     <option value="">----Selecione----</option>
 
@@ -70,8 +69,9 @@ include_once(__DIR__ . "/../include/header.php");
             <input type="hidden" name="id"
                 value="<?= $aluno ? $aluno->getId() : 0 ?>">
 
-            <div class="mt-3">
-                <button type="submit" class="btn btn-success">Gravar</button>
+            <div class="mt-2">
+                <button type="submit" 
+                    class="btn btn-success">Gravar</button>
             </div>
 
         </form>
@@ -80,17 +80,15 @@ include_once(__DIR__ . "/../include/header.php");
     <div class="col-6">
         <?php if($msgErro): ?>
             <div class="alert alert-danger">
-                    <?= $msgErro ?>
+                <?= $msgErro ?>
             </div>
         <?php endif; ?>
     </div>
-   
 
-</div>
+</div> <!-- fecha a linha -->
 
-
-<div class = "mt-4">
-    <a href="listar.php" class="btn btn-outline-primary ">Voltar</a>
+<div class="mt-2">
+    <a href="listar.php" class="btn btn-outline-primary">Voltar</a>
 </div>
 
 

@@ -56,42 +56,35 @@ class AlunoDAO {
         }
     }
 
-
-    public function alterar(Aluno $aluno){ 
+    public function alterar(Aluno $aluno) {
         try {
-            $sql = "UPDATE alunos SET nome = ?, idade = ?, estrangeiro = ?, id_curso = ? WHERE id = ?";
+            $sql = "UPDATE alunos SET nome = ?, idade = ?,
+                        estrangeiro = ?, id_curso = ?
+                    WHERE id = ?";
             $stm = $this->conexao->prepare($sql);
             $stm->execute([
-                $aluno->getNome(), $aluno->getIdade(), $aluno->getEstrangeiro(), 
-                $aluno->getCurso()->getId(), $aluno->getId() 
+                $aluno->getNome(), $aluno->getIdade(),
+                $aluno->getEstrangeiro(), $aluno->getCurso()->getId(),
+                $aluno->getId()
             ]);
-
-
             return NULL;
         } catch(PDOException $e) {
             return $e;
         }
-
-
     }
 
-    public function excluir(Aluno $aluno){ 
+    public function excluirPorId(int $id) {
         try {
-            $sql = "DELETE FROM alunos WHERE id = :id";
+            $sql = "DELETE FROM alunos 
+                    WHERE id = :id";
             $stm = $this->conexao->prepare($sql);
-            $stm->bindValue("id", $aluno->getId());
+            $stm->bindValue("id", $id);
             $stm->execute();
-
-
             return NULL;
         } catch(PDOException $e) {
             return $e;
         }
-
-
     }
-
-
 
     private function map(array $result) {
         $alunos = array();

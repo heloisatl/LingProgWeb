@@ -10,7 +10,7 @@ $aluno = null;
 if(isset($_POST['nome'])) {
     //Já clicou no gravar
     //1- Capturar os dados do formulário
-    $id = isset($_POST["id"]) ? $_POST["id"] : null; //Chegar por POST
+    $id          = $_POST["id"]; //Chegar por POST
     $nome        = trim($_POST['nome']) ? trim($_POST['nome']) : NULL;
     $idade       = is_numeric($_POST['idade']) ? $_POST['idade'] : NULL;
     $estrangeiro = trim($_POST['estrang']) ? trim($_POST['estrang']) : NULL;
