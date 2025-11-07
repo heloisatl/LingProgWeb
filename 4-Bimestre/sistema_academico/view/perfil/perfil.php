@@ -2,29 +2,45 @@
 include_once(__DIR__ . "/../login/validar.php");
 
 include_once(__DIR__ . "/../../controller/LoginController.php");
+include_once(__DIR__ . "/../../controller/PerfilController.php");
 
 //Carregar o objeto referente ao usuário logado
 $loginCont = new LoginController();
 $usuario = $loginCont->getUsuarioLogado();
-
-if(($_FILES['foto'])){
-    print_r($_FILES['foto']);
-};
-
 if(!$usuario) {
     echo "Usuário não encontrado!";
     exit;
 }
 
-$msgErro = "";
-//TODO - Receber os dados do formulário
+//Carregar mensagem de sucesso de acordo com o parâmetro GET msg
+$msgSucesso = "";
+if(isset($_GET['msg']) && $_GET['msg'] == 1) {
+    $msgSucesso = "Foto de perfil atualiza com sucesso.";
+}
 
+
+$msgErro = "";
+
+//Receber os dados do formulário
+//Verificar se o usuário já clicou no gravar
+if(isset($_FILES['foto'])) {
+    //print_r($_FILES['foto']);
+    $foto = $_FILES['foto'];
+
+    $perfCont = new PerfilController();
+
+    $erros = $perfCont->atualizar($usuario, $foto);
+    if($erros) {
+        $msgErro = implode("<br>", $erros);
+    } else {
+        header("location: " . URL_BASE . "/view/perfil/perfil.php?msg=1");
+    }
+
+}
 
 //Inclusão do header e do Menu
 include_once(__DIR__ . "/../include/header.php");
 include_once(__DIR__ . "/../include/menu.php");
-
-
 ?>
 
 <h3 class="text-center">
@@ -53,18 +69,29 @@ include_once(__DIR__ . "/../include/menu.php");
         <?php endif; ?>
     </div>
 
+    <div class="col-6 mb-2 mt-3">
+        <?php if($msgSucesso): ?>
+            <div class="alert alert-success">
+                <?= $msgSucesso ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
 </div>
     
 <div class="row mt-5">
     
     <div class="col-6">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="perfil.php" method="POST"
+            enctype="multipart/form-data" >
+
             <div>
-                <labelfor="">Foto de perfil</label>
-                <input type="file" name="foto" class="form-control" accept="image/*">
-              
+                <label for="foto" class="form-label">Foto de perfil: </label>
+                <input id="foto" type="file" name="foto"
+                    class="form-control" accept="image/*">
             </div>
-            <div class="margin-3">
+
+            <div class="mt-3">
                 <button class="btn btn-success">Gravar</button>
             </div>
         </form>

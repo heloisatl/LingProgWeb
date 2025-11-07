@@ -38,12 +38,12 @@ class LoginController {
         return $this->loginService->getNomeUsuarioLogado();
     }
 
-    public function usuarioEstaLogado() {
-        return $this->loginService->usuarioEstaLogado();
+    public function getUsuarioLogado(): ?Usuario {
+        return $this->loginService->getUsuarioLogado();
     }
 
-    public function getUsuarioLogado() {
-        return $this->loginService->getUsuarioLogado();
+    public function usuarioEstaLogado() {
+        return $this->loginService->usuarioEstaLogado();
     }
 
 }

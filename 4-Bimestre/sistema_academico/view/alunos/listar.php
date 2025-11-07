@@ -3,7 +3,6 @@
 
     require_once(__DIR__ . "/../../controller/AlunoController.php");   
 
-
     //Chamar o controller para obter a lista de alunos
     $alunoCont = new AlunoController();
     $lista = $alunoCont->listar();

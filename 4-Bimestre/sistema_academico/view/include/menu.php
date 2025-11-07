@@ -24,11 +24,11 @@ $nome = $loginCont->getNomeUsuarioLogado();
                 <div class="dropdown-menu">
                     <a class="dropdown-item" 
                         href="<?= URL_BASE ?>/view/alunos/listar.php">Alunos</a>
-                    <a class="dropdown-item" href="#">Turmas</a>
+                    <a class="dropdown-item" 
+                        href="<?= URL_BASE ?>/view/turmas/listar.php">Turmas</a>
                 </div>
             </li>
 
-            
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#"
                     id="navDropDown" data-bs-toggle="dropdown"><?= $nome ?></a>
@@ -39,7 +39,6 @@ $nome = $loginCont->getNomeUsuarioLogado();
                         href="<?= URL_BASE ?>/view/login/sair.php">Sair</a>
                 </div>
             </li>
-
 
             <li class="nav-item">
                 <a class="nav-link" href="#">Sobre</a>

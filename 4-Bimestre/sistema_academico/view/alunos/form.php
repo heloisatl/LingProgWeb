@@ -8,6 +8,7 @@ $cursos = $cursoCont->listar();
 
 include_once(__DIR__ . "/../include/header.php");
 
+//Incluir o menu
 include_once(__DIR__ . "/../include/menu.php");
 ?>
 
