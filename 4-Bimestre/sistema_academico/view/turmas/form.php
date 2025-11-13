@@ -17,6 +17,7 @@ require_once(__DIR__ . "/../../controller/CursoController.php");
 $cursoCont = new CursoController();
 $cursos = $cursoCont->listar();
 ?>
+<span id="confUrlBase" data-url-base="<?=URL_BASE?>"></span>
 
 <h2><?php echo (!$turma || $turma->getId() <= 0 ? 'Inserir' : 'Alterar') ?> Turma</h2>
 
@@ -32,7 +33,8 @@ $cursos = $cursoCont->listar();
 
             <div>
                 <label for="selCurso" class="form-label">Curso:</label>
-                <select id="selCurso" name="curso" class="form-control" onchange="carregarDisc()">
+                <select id="selCurso" name="curso" class="form-control"
+                    onchange="carregarDisciplinas()">
                     <option value="0">---Selecione---</option>
                     <?php foreach($cursos as $c): ?>
                         <option value="<?= $c->getId() ?>"
@@ -57,7 +59,7 @@ $cursos = $cursoCont->listar();
             <button type="submit" class="btn btn-success mt-3">Gravar</button>
             
             <?php if(! $turma || $turma->getId() <= 0): ?> 
-                <button type="button" class="btn btn-warning mt-3">
+                <button type="button" class="btn btn-warning mt-3" onclick="salvarTurma()">
                     Gravar AJAX
                 </button>
             <?php endif; ?>
@@ -82,7 +84,7 @@ $cursos = $cursoCont->listar();
 </div>
 
 
-<script src="js/turmas.js"></script>
+<script src="js/turma.js"></script>
 
 <?php 
 //Inclui o FOOTER
